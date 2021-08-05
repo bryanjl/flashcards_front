@@ -1,0 +1,174 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#page-container {
+    display: grid;
+    height: 100vh;
+    margin: 0;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: 
+    "header header header header header header header header"
+    "sidebar flashcard flashcard flashcard flashcard flashcard flashcard flashcard"
+    "sidebar flashcard flashcard flashcard flashcard flashcard flashcard flashcard"
+    "sidebar flashcard flashcard flashcard flashcard flashcard flashcard flashcard"
+    "sidebar flashcard flashcard flashcard flashcard flashcard flashcard flashcard"
+    "sidebar flashcard flashcard flashcard flashcard flashcard flashcard flashcard"
+    "sidebar flashcard flashcard flashcard flashcard flashcard flashcard flashcard"
+    "footer footer footer footer footer footer footer footer";
+    
+}
+
+#study-header {
+    grid-area: header;
+    background-color: aliceblue;
+    /* margin-bottom: 10px; */
+}
+
+#study-footer {
+    grid-area: footer;
+    background-color: blue;
+}
+
+#study-sidebar {
+    grid-area: sidebar;
+    background-color: red;
+}
+
+#flashcard-container {
+    grid-area: flashcard;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.question-container {
+    width: 80%;
+    min-height: 65vh;
+    background-color: black;
+    margin-bottom: 70px;
+    margin-top: 20px;
+
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-areas: "question buttons";
+}
+
+.question-area {
+    grid-area: question;
+    background-color: brown;
+    margin: 20px;
+    
+
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-areas: "qImage qText";
+}
+
+.question-image {
+    grid-area: qImage;
+    background-color: white;
+    margin: 5px;
+    max-height: auto;
+    max-width: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.question-image img {
+    max-height: 55vh;
+    width: 100%;
+    object-fit: contain;
+}
+
+.question-text {
+    grid-area: qText;
+    background-color: white;
+    margin: 5px;
+}
+
+.question-text p {
+    text-align: center;
+}
+
+.answer-container {
+    display: flex;
+    flex-direction: column;
+    grid-area: buttons;
+    background-color: blueviolet;
+    margin: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.answer-container > button {
+    width: 90%;
+    border: none;
+    border-radius: 12px;
+    background-color: pink;
+
+}
+
+.correct-answer {
+    background-color: aliceblue;
+    grid-area: question;
+    color: green;
+    font-size: 5em;
+    height: 100%;
+    width: 100%;
+    /* text-align: center; */
+    z-index: 99;
+    opacity: .8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.incorrect-answer {
+    background-color: red;
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+
+
+@media only screen and (max-width: 768px){
+    #page-container {
+        display: grid;
+        height: 100vh;
+        margin: 0;
+        grid-template-columns: 5% 90% 5%;
+        grid-template-rows: 10% 5% 70% 5% 10%;
+        grid-template-areas:
+            "header header header"
+            ". . ."
+            "flashcard flashcard flashcard" 
+            ". . ."
+            "footer footer footer"; 
+    }
+
+    .question-container {
+        width: 80%;
+        min-height: 65vh;
+        background-color: black;
+        margin-bottom: 70px;
+        margin-top: 70px;
+    
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 80% 20%;
+        grid-template-areas: "question"
+                             "buttons";
+    }
+
+    .question-buttons > button{
+        margin: 3px;
+        width: 65%;
+    }
+
+}
